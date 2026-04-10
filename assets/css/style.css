@@ -1,0 +1,29 @@
+:root {
+    /* --- PALETA 60-30-10 --- */
+    --color-primary-60: #121417;     /* Cinza Escuro Carbono */
+    --color-secondary-30: #ffffff;   /* Branco Limpo */
+    --color--tertiary-10: #f2994a;    /* Laranja Dourado (Destaque) */
+
+    /* --- VARIAÇÕES DE APOIO --- */
+    --gray-light: #f8f9fa;     /* Para fundos levemente acinzentados */
+    --gray-medium: #2c2e33;    /* Para bordas e divisores em modo escuro */
+    --text-main: #121417;
+    --text-on-dark: #ffffff;
+    --text-muted: #6b7280;
+
+    /* --- TIPOGRAFIA --- */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* --- ESCALA MODULAR (Sizing) --- */
+    --size-1: 0.5rem;   /* 8px */
+    --size-2: 1rem;     /* 16px */
+    --size-3: 1.5rem;   /* 24px */
+    --size-4: 2rem;     /* 32px */
+    --size-5: 3rem;     /* 48px */
+
+    /* --- EFEITOS (Branding) --- */
+    --radius: 6px;      /* Bordas levemente arredondadas (aspecto industrial) */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
