@@ -18,10 +18,40 @@
     <meta name="twitter:title" content="Page Title">
     <meta name="twitter:description" content="Page description">
     <meta name="twitter:image" content="https://www.example.com/image.jpg">
-    <link rel="stylesheet" href="assents/css/style.css">
-    <link rel="stylesheet" href="assents/css/microframework.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/microframework.css">
 </head>
 <body>
+    <nav class="bem-navbar" style="background-color: rgba(255, 255, 255, 0.383);">
+        <head>
+            <a href="#" class="bem-navbar__brand">Brand</a>
+              <ul class="bem-navbar__menu">
+                <li>contato@oficina.com</li>
+                <li>11-9999-8888</li>
+              </ul>
+        </head>
+        <ul class="bem-navbar__menu">
+            <li class="bem-navbar__item">
+                <a href="#" class="bem-navbar__link bem-navbar__link--active">Home</a>
+            </li>
+            <li class="bem-navbar__item">
+                <a href="#" class="bem-navbar__link">About</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section class="bem-hero">
+            <div class="bem-hero__titulo">
+                <h1>Oficina Senac</h1>
+                <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempora minus voluptatem nam recusandae voluptatum at amet rem nihil delectus eum, dolores nesciunt non blanditiis id quae! Ex, hic facilis.</P>
+                <a href="#Contato" class="bem-btn bem-btn--primary">
+                    Orçamento
+                </a>
+            </div>
+            <img src="/assets/imagens/img-hero/20f809063b5beaedbd3e4b792c416905-removebg-preview.png"
+             width="500px" alt="Carro Tranparente" class="bem-hero_imagem">
+        </section>
+    </main>
     <nav class="bem-navbar">
         <a href="#" class="bem-navbar__brand">Brand</a>
         <input type="checkbox" id="nav-toggle" class="bem-navbar__checkbox">
