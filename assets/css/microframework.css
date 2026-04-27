@@ -85,6 +85,18 @@ header{
   z-index: 1001;
   width: 100px;
 }
+.icon-marcas{
+  width: 100px;
+}
+.container-icons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: var(--bem-spacing-sm) 0;
+  padding: var(--bem-radius-sm);
+}
 .bem-hero{
   /*relativo para controlar a posição absoluta dos elemntos*/
   position: relative;
@@ -158,7 +170,7 @@ header{
 }
 .bem-btn:hover{ transform:translateY(-1px);box-shadow:var(--bem-shadow-md) }
 .bem-btn:active{ transform:translateY(0) }
-.bem-btn--primary{ background-color:var(--bem-primary);color:#fff; border: 2px solid var(--bem-tertiary); }
+.bem-btn--primary{ background-color:var(--bem-primary);color:#fff; border: 2px solid var(--bem-t); }
 .bem-btn--primary:hover{ filter:brightness(.9) }
 .bem-btn--secondary{ background-color:var(--bem-secondary);color:#fff }
 .bem-btn--secondary:hover{ filter:brightness(.9) }
