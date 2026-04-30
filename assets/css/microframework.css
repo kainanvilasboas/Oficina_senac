@@ -202,7 +202,7 @@ header{
 }
 .bem-btn:hover{ transform:translateY(-1px);box-shadow:var(--bem-shadow-md) }
 .bem-btn:active{ transform:translateY(0) }
-.bem-btn--primary{ background-color:var(--bem-primary);color:#fff; border: 2px solid var(--bem-t); }
+.bem-btn--primary{ background-color:var(--bem-primary);color:#fff; border: 2px solid var(--bem-tertiary); }
 .bem-btn--primary:hover{ filter:brightness(.9) }
 .bem-btn--secondary{ background-color:var(--bem-secondary);color:#fff }
 .bem-btn--secondary:hover{ filter:brightness(.9) }
@@ -547,4 +547,21 @@ header{
 
 .img-comp-overlay{
   border-right: solid 2px var(--bem-tertiary);
+}
+
+/* --- ANIMAÇÕES DE SCROLL (REVELAR) --- */
+.revelar {
+    opacity: 0;
+    /* Move o elemento 50px para baixo no eixo Y */
+    transform: translateY(50px);
+    /* Transição suave usando a variável que você já tem no :root ou uma específica */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Garante que o elemento fique invisível e não cause bugs de layout se estiver fora da tela */
+    visibility: hidden; 
+}
+
+.revelar.ativo {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
 }

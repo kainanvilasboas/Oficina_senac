@@ -76,3 +76,35 @@ function initComparisons() {
   }
 }
 initComparisons();
+
+// --- LÓGICA DE REVELAÇÃO NO SCROLL ---
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Seleciona todos os elementos que terão a animação
+    const elementosParaRevelar = document.querySelectorAll('.revelar');
+
+    // 2. Configura as opções do observador
+    const opcoesDeRevelacao = {
+        threshold: 0.15, // O efeito dispara quando 15% do elemento estiver visível
+        rootMargin: "0px 0px -50px 0px" // Dispara um pouco antes de chegar na borda inferior
+    };
+
+    // 3. Cria o observador de interseção
+    const observarRolagem = new IntersectionObserver(function(entradas, observador) {
+        entradas.forEach(entrada => {
+            // Se o elemento estiver interceptando (visível na tela)
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('ativo');
+                // Se quiser que anime apenas uma vez, remova o comentário abaixo:
+                // observador.unobserve(entrada.target); 
+            } else {
+                // Remove a classe se o elemento sair da tela (faz a animação voltar)
+                entrada.target.classList.remove('ativo');
+            }
+        });
+    }, opcoesDeRevelacao);
+
+    // 4. Inicia a observação de cada elemento
+    elementosParaRevelar.forEach(elemento => {
+        observarRolagem.observe(elemento);
+    });
+});
