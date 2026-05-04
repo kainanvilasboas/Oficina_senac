@@ -63,6 +63,7 @@ body{
   background:var(--bem-light);
   transition:background .25s, color .25s;
   cursor:url(../imagens/cursor/cursor.svg), auto;
+  padding-top: 70px;
 }
 a{
   cursor: url(../imagens/cursor/cursor-ancora.svg), auto;
@@ -86,8 +87,8 @@ header{
   left: 50px;
   /*            primeira X    segunda Y        */
   transform:translate(-120px, 0);
-  z-index: 1001;
-  width: 100px;
+  z-index: 1200;
+  width: 60px;
 }
 .icon-marcas{
   width: 100px;
@@ -341,25 +342,32 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-evenly;
-  padding:var(--bem-spacing-md) var(--bem-spacing-lg);
+  padding: 0 var(--bem-spacing-lg);
   box-shadow:var(--bem-shadow-sm);
   transition:background .25s;
-  position:sticky;
-  top:0; 
-  z-index:100;
+  position:fixed;
+  top:0;
+  left: 0;
+  z-index:1100;
   width: 100%;
+  height: 70px;
   background-color: var(--bem-primary);
   color: var(--bem-secondary);
 }
+#menu-navegacao {
+  position: sticky;
+  top: 70px;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--bem-primary);
+}
+
 .bem-navbar--secundaria{
   display:flex;
   align-items:center;
   justify-content:center;
   padding:var(--bem-spacing-md) var(--bem-spacing-lg);
-  box-shadow:var(--bem-shadow-sm);
   transition:background .25s;
-  position:sticky; top:70px; z-index:10;
-  background-color: var(--bem-primary);
 }
 .bem-navbar--dark{ background-color:var(--bem-dark);color:#fff }
 .bem-navbar__brand{ font-size:1.5rem;font-weight:700;text-decoration:none;color:inherit; position: relative; }
@@ -456,14 +464,18 @@ header{
     display: none;
   }
   .bem-navbar--secundaria{
-  position:fixed; top:0px;
+  position:fixed; top:0px; left:0; width:100%;
+}
+#menu-navegacao {
+  position: static;
 }
 .bem-logo{
   display: block;
   position: fixed;
-  top: 0;
+  top: 5px;
   left: 50%;
-  z-index: 151;
+  transform: translateX(-50%);
+  z-index: 1201;
 }
 .bem-navbar{
   display: none;
