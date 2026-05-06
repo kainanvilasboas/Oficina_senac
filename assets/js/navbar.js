@@ -84,7 +84,7 @@ const renderizarNavbars = () => {
                 <a href="index.html#equipe" class="bem-navbar__link" data-page="equipe">Equipe</a>
             </li>
             <li class="bem-navbar__item">
-                <a href="index.html#contato" class="bem-navbar__link" data-page="contato">Contato</a>
+                <a href="contato.html" class="bem-navbar__link" data-page="contato">Contato</a>
             </li>
         </ul>
     </nav>

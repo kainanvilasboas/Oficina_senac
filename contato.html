@@ -3,19 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficina Senac -  Contato</title>
-    <meta name="description" content="Oficina de Desenvolvimento de sites para carros">
-    <meta name="keywords" content="keyword1, keyword2">
-    <meta property="og:title" content="Page Title">
-    <meta property="og:description" content="Page description">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.example.com">
-    <meta property="og:image" content="https://www.example.com/image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Page Title">
-    <meta name="twitter:description" content="Page description">
-    <meta name="twitter:image" content="https://www.example.com/image.jpg">
-
+    <title>Oficina Senac - Contato</title>
+    <meta name="description" content="Entre em contato com a Oficina Senac - Solicite um orçamento">
+    <meta name="keywords" content="oficina, contato, orçamento, mecânica">
     <link rel="preload" href="assets/css/microframework.css" as="style"
             onload="this.rel='stylesheet'">
     <noscript>
@@ -27,20 +17,99 @@
     <div id="menu-navegacao"></div>
 
     <main>
-<section class="bem-container revelar" id="contato">
-            <h2 class="bem-titulo-h2">Contato</h2>
-            <div class="bem-grid-auto">            
-                        
-           
-          </div>
-        </section>
+        <section class="bem-container revelar" id="contato-page">
+            <h2 class="bem-titulo-h2">Fale Conosco</h2>
+            <p class="bem-contato__subtitulo">Envie sua mensagem ou solicite um orçamento</p>
 
+            <div class="bem-contato__wrapper">
+                <!-- Coluna: Info de Contato -->
+                <div class="bem-contato__info">
+                    <div class="bem-contato__info-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>Rua Exemplo, 123 - São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="bem-contato__info-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>(11) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="bem-contato__info-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>contato@oficinasenac.com</p>
+                        </div>
+                    </div>
+                    <div class="bem-contato__info-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <div>
+                            <h3>Horário</h3>
+                            <p>Seg-Sex: 8h às 18h | Sáb: 8h às 13h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna: Formulário -->
+                <form class="bem-form bem-contato__form" id="form-contato">
+                    <div class="bem-form__group">
+                        <label class="bem-form__label bem-form__label--required" for="nome">Nome completo</label>
+                        <input class="bem-form__input" type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="bem-contato__form-row">
+                        <div class="bem-form__group">
+                            <label class="bem-form__label bem-form__label--required" for="email">E-mail</label>
+                            <input class="bem-form__input" type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="bem-form__group">
+                            <label class="bem-form__label" for="telefone">Telefone</label>
+                            <input class="bem-form__input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                        </div>
+                    </div>
+                    <div class="bem-form__group">
+                        <label class="bem-form__label" for="servico">Serviço desejado</label>
+                        <select class="bem-form__select" id="servico" name="servico">
+                            <option value="">Selecione um serviço</option>
+                            <option value="oleo">Troca de Óleo</option>
+                            <option value="pintura">Pintura</option>
+                            <option value="funilaria">Funilaria</option>
+                            <option value="eletrica">Elétrica</option>
+                            <option value="suspensao">Suspensão</option>
+                            <option value="diagnostico">Diagnóstico</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="bem-form__group">
+                        <label class="bem-form__label bem-form__label--required" for="mensagem">Mensagem</label>
+                        <textarea class="bem-form__textarea" id="mensagem" name="mensagem" rows="5" placeholder="Descreva o que precisa..." required></textarea>
+                    </div>
+                    <button type="submit" class="bem-btn bem-btn--primary bem-btn--block" id="btn-enviar">
+                        Enviar Mensagem
+                    </button>
+                    <div id="form-feedback" class="bem-contato__feedback" style="display:none;"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-container"></footer>
+    <script src="assets/footer.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/script.js"></script>
-
-</main>
- <footer id="footer-container">
-     </footer>
-      <script src="assets/footer.js"></script>
 </body>
 </html>
