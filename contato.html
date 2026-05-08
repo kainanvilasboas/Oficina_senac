@@ -23,13 +23,15 @@
     </noscript>
 
     <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            // Substitua 'YOUR_PUBLIC_KEY' pela sua chave pública do EmailJS
-            emailjs.init("YOUR_PUBLIC_KEY");
+            emailjs.init({
+                publicKey: "NWUdjwvinlWgO7mlw",
+            });
         })();
     </script>
+
 
 </head>
 <body class="bem-cursor">
@@ -319,9 +321,13 @@
             btnEnviar.innerHTML = '<span class="bem-btn__icon">⏳</span> Enviando...';
 
             // Envio Real via EmailJS
-            // IMPORTANTE: Substitua 'contato_site' e 'template_id' pelos seus IDs reais do EmailJS
-            emailjs.sendForm('contato_site', 'form-contato', form)
-                .then(function() {
+            // 1. 'service_7hgewsq' é o seu SERVICE ID
+            // 2. 'template_wfwbbgo' é o seu TEMPLATE ID
+            emailjs.sendForm('service_7hgewsq', 'template_wfwbbgo', form)
+
+
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
                     feedbackSucesso.classList.add('visivel');
                     feedbackSucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     form.reset();
@@ -330,12 +336,19 @@
                     });
                 })
                 .catch(function(error) {
-                    console.error('Erro ao enviar e-mail:', error);
+                    console.error('FAILED...', error);
+                    let erroMsg = 'Ocorreu um erro técnico.';
+                    
+                    if (error.status === 400) {
+                        erroMsg = 'Configuração incorreta: Verifique se o SERVICE ID e o TEMPLATE ID estão corretos no EmailJS.';
+                    }
+                    
                     feedbackErro.querySelector('.bem-alert__title').textContent = 'Erro ao enviar mensagem.';
-                    feedbackErro.querySelector('.bem-alert__message').textContent = 'Verifique se as chaves do EmailJS estão corretas ou tente novamente mais tarde.';
+                    feedbackErro.querySelector('.bem-alert__message').textContent = erroMsg;
                     feedbackErro.classList.add('visivel');
                     feedbackErro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 })
+
                 .finally(function() {
                     btnEnviar.disabled = false;
                     btnEnviar.innerHTML = btnOriginalContent;
