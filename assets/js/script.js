@@ -109,44 +109,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// --- VALIDAÇÃO DO FORMULÁRIO DE CONTATO ---
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form-contato');
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const feedback = document.getElementById('form-feedback');
-        const campos = form.querySelectorAll('[required]');
-        let valido = true;
-
-        campos.forEach(campo => {
-            campo.classList.remove('bem-form__input--error', 'bem-form__input--success',
-                                  'bem-form__textarea--error', 'bem-form__textarea--success');
-            if (!campo.value.trim()) {
-                const errorClass = campo.tagName === 'TEXTAREA'
-                    ? 'bem-form__textarea--error' : 'bem-form__input--error';
-                campo.classList.add(errorClass);
-                valido = false;
-            } else {
-                const successClass = campo.tagName === 'TEXTAREA'
-                    ? 'bem-form__textarea--success' : 'bem-form__input--success';
-                campo.classList.add(successClass);
-            }
-        });
-
-        if (valido) {
-            feedback.style.display = 'block';
-            feedback.className = 'bem-contato__feedback bem-contato__feedback--success';
-            feedback.textContent = '✅ Mensagem enviada com sucesso! Retornaremos em breve.';
-            form.reset();
-            campos.forEach(c => {
-                c.classList.remove('bem-form__input--success', 'bem-form__textarea--success');
-            });
-        } else {
-            feedback.style.display = 'block';
-            feedback.className = 'bem-contato__feedback bem-contato__feedback--error';
-            feedback.textContent = '⚠️ Preencha todos os campos obrigatórios.';
-        }
-    });
-});
+// --- VALIDAÇÃO DO FORMULÁRIO DE CONTATO FOI MOVIDA PARA A PÁGINA ESPECÍFICA (contato.html) ---
