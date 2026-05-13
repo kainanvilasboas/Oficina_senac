@@ -21,18 +21,6 @@
     <noscript>
         <link rel="stylesheet" href="assets/css/microframework.css">
     </noscript>
-
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init({
-                publicKey: "NWUdjwvinlWgO7mlw",
-            });
-        })();
-    </script>
-
-
 </head>
 <body class="bem-cursor">
     <div id="navbar-principal" class="bem-navbar"></div>
@@ -254,16 +242,23 @@
     <script src="assets/js/footer.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/script.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "KrZzxxxxxxxxxxxxxxx",
+            });
+        })();
+        </script>
     <script>
     // Validação e feedback do formulário de contato
-    document.addEventListener('DOMContentLoaded', function() {
+    (function () {
         const form = document.getElementById('form-contato');
-        if (!form) return;
-
         const btnEnviar = document.getElementById('btn-enviar');
         const feedbackSucesso = document.getElementById('contato-sucesso');
         const feedbackErro = document.getElementById('contato-erro');
-        const btnOriginalContent = btnEnviar.innerHTML;
 
         function limparFeedback() {
             feedbackSucesso.classList.remove('visivel');
@@ -272,15 +267,15 @@
 
         function marcarCampo(campo, valido) {
             campo.classList.remove('bem-form__input--success', 'bem-form__input--error');
-            if (campo.value.trim() !== '') {
-                campo.classList.add(valido ? 'bem-form__input--success' : 'bem-form__input--error');
-            }
+            campo.classList.add(valido ? 'bem-form__input--success' : 'bem-form__input--error');
         }
 
         // Validação em tempo real ao sair do campo
         form.querySelectorAll('.bem-form__input, .bem-form__textarea, .bem-form__select').forEach(function (campo) {
             campo.addEventListener('blur', function () {
-                marcarCampo(campo, campo.checkValidity());
+                if (campo.value.trim() !== '') {
+                    marcarCampo(campo, campo.checkValidity());
+                }
             });
         });
 
@@ -290,10 +285,7 @@
 
             // Verificar honeypot
             const honeypot = form.querySelector('#campo-extra');
-            if (honeypot && honeypot.value !== '') {
-                console.warn('Spam detectado (honeypot)');
-                return;
-            }
+            if (honeypot && honeypot.value !== '') return;
 
             const camposObrigatorios = form.querySelectorAll('[required]');
             let formularioValido = true;
@@ -310,53 +302,44 @@
                 return;
             }
 
-            // Verificar se o EmailJS foi inicializado
-            if (typeof emailjs === 'undefined') {
-                console.error('EmailJS SDK não foi carregado corretamente.');
-                return;
-            }
+            
 
-            // Iniciar envio
-            btnEnviar.disabled = true;
-            btnEnviar.innerHTML = '<span class="bem-btn__icon">⏳</span> Enviando...';
-
-            // Envio Real via EmailJS
-            // 1. 'service_7hgewsq' é o seu SERVICE ID
-            // 2. 'template_wfwbbgo' é o seu TEMPLATE ID
-            emailjs.sendForm('service_7hgewsq', 'template_wfwbbgo', form)
-
-
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
+                // Simulação de envio (substituir por fetch/Formspree se necessário)
+        fetch('enviar_email.php', {
+             method: 'POST',
+             header: {
+               'content-Type': 'application/json'
+            },
+         body: JSON.stringify({
+             nome: document.getElementById("nome").value,
+             telefone: document.getElementById("telefone").value,
+             email: document.getElementById("email").value,
+             horario: document.getElementById("horario").value,
+             servico: document.getElementById("servico").value,
+             mensagem: document.getElementById("mensagem").value
+                    })
+                 })
+             .then(() => {
+                  btnEnviar.disabled = true;
+                 btnEnviar.textContent = 'Enviando...';
+                 setTimeout(function () {
                     feedbackSucesso.classList.add('visivel');
                     feedbackSucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     form.reset();
-                    form.querySelectorAll('.bem-form__input, .bem-form__textarea, .bem-form__select').forEach(function (c) {
-                        c.classList.remove('bem-form__input--success', 'bem-form__input--error');
-                    });
-                })
-                .catch(function(error) {
-                    console.error('FAILED...', error);
-                    let erroMsg = 'Ocorreu um erro técnico.';
-                    
-                    if (error.status === 400) {
-                        erroMsg = 'Configuração incorreta: Verifique se o SERVICE ID e o TEMPLATE ID estão corretos no EmailJS.';
-                    }
-                    
-                    feedbackErro.querySelector('.bem-alert__title').textContent = 'Erro ao enviar mensagem.';
-                    feedbackErro.querySelector('.bem-alert__message').textContent = erroMsg;
-                    feedbackErro.classList.add('visivel');
-                    feedbackErro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                })
+                     form.querySelectorAll('.bem-form__input, .bem-form__textarea, .bem-form__select').forEach(function (c) {
+                          c.classList.remove('bem-form__input--success', 'bem-form__input--error');
+                   });
+                   btnEnviar.disabled = false;
+             btnEnviar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Enviar Mensagem';
+                 }, 1200);
+            }, (error) => {
+               console.log('FAILED...', error);
+              });
 
-                .finally(function() {
-                    btnEnviar.disabled = false;
-                    btnEnviar.innerHTML = btnOriginalContent;
-                });
+
+            
         });
-    });
-
-
+    })();
     </script>
 </body>
 </html>
